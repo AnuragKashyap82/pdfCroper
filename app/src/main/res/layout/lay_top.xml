@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/cardBack"
+    android:layout_width="match_parent"
+    android:layout_height="55dp"
+    android:layout_alignParentTop="true"
+    android:orientation="horizontal"
+    android:background="@drawable/rectangle_top"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:id="@+id/imgBck"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:padding="3dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_bck"
+        />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:text="@string/app_name"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:padding="8dp"
+        android:layout_marginEnd="32dp"
+        android:gravity="bottom|center"
+        />
+    <ImageView
+        android:id="@+id/imgHome"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:visibility="gone"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_home"
+        />
+
+</LinearLayout>

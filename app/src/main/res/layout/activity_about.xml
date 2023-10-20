@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary"
+    tools:context=".AboutActivity">
+    <include layout="@layout/lay_top"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardAbout"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:cardCornerRadius="12dp"
+        android:layout_gravity="center"
+        app:cardElevation="2dp"
+        android:layout_margin="12dp"
+        app:cardBackgroundColor="@color/bg_color"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <ImageView
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:contentDescription="@string/app_name"
+                android:layout_gravity="center"
+                android:layout_marginTop="28dp"
+                android:src="@drawable/ic_infos"
+                android:background="@drawable/ic_info_bck"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:text="@string/about_app"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:layout_margin="12dp"
+                />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardRateUs"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:cardCornerRadius="12dp"
+        android:layout_gravity="center"
+        app:cardElevation="2dp"
+        android:layout_margin="12dp"
+        app:cardBackgroundColor="@color/bg_color"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <ImageView
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:contentDescription="@string/app_name"
+                android:layout_gravity="center"
+                android:layout_marginTop="28dp"
+                android:src="@drawable/ic_star_img" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:text="@string/rate_us"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:layout_margin="12dp"
+                />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardShare"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:cardCornerRadius="12dp"
+        android:layout_gravity="center"
+        app:cardElevation="2dp"
+        android:layout_margin="12dp"
+        app:cardBackgroundColor="@color/bg_color"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <ImageView
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:contentDescription="@string/app_name"
+                android:layout_gravity="center"
+                android:layout_marginTop="28dp"
+                android:src="@drawable/ic_share_img" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:text="@string/share_app"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:layout_margin="12dp"
+                />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+</LinearLayout>

@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">My PDF</string>
+    <string name="permission_storage">com.pdf.and.image.cropper.PERMISSION_STORAGE</string>
+    <string name="user_first_time">com.pdf.and.image.cropper.USER_FIRST_TIME</string>
+    <string name="permission_preferences">com.pdf.and.image.cropper.PERMISSION_PREFERENCES</string>
+    <string name="close">X</string>
+    <string name="viewReward">To download pdf you need to view reward ad</string>
+    <string name="closeAds">Close</string>
+    <string name="yes">View Ad</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="downloads">Download</string>
+    <string name="pdf_share">PDF | Share </string>
+    <string name="my_pdf">My Pdf</string>
+    <string name="share_image">Share Image</string>
+    <string name="share_app">Share App</string>
+    <string name="rate_us">Rate Us</string>
+    <string name="about_app">About App</string>
+    <string name="convert_pdf">Convert Pdf</string>
+    <string name="clear">Clear</string>
+    <string name="add_more">Add More</string>
+    <string name="crop">Crop</string>
+    <string name="save_image">Save Image</string>
+    <string name="convert_to_image">Convert To Image</string>
+    <string name="share_pdf">Share Pdf</string>
+</resources>
