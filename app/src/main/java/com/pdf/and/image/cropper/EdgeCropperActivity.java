@@ -28,6 +28,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
@@ -73,7 +74,7 @@ public class EdgeCropperActivity extends AppCompatActivity {
 
     private final int CAMERA = 2;
 
-    private AppCompatButton btnMore, btnCrop, btnPrint, btnDone;
+    private ImageView btnMore, btnCrop, btnPrint, btnDone;
 
     private int cameraCnt = 0;
     int mIndex = -1;
@@ -89,11 +90,14 @@ public class EdgeCropperActivity extends AppCompatActivity {
     private int selectedCount = 0;
     private int addMoreValue = 1;
 
+    private ImageView btnShare;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edge_cropper);
         scannerView = findViewById(R.id.document_scanner);
+        btnShare = findViewById(R.id.btnShare);
         scrollView = findViewById(R.id.scrollView);
         scannerView.setVisibility(View.GONE);
         context = getApplicationContext();
@@ -108,6 +112,7 @@ public class EdgeCropperActivity extends AppCompatActivity {
         btnMore.setVisibility(View.GONE);
 
 
+        btnShare.setVisibility(View.GONE);
         init();
 
 
@@ -333,36 +338,22 @@ public class EdgeCropperActivity extends AppCompatActivity {
     }
 
     public Bitmap getBitmapFromImageView(ImageView imageView) {
-        // Enable drawing cache for the ImageView
-        imageView.setDrawingCacheEnabled(true);
+        if (imageView != null) {
+            // Get the drawable from the ImageView
+            Drawable drawable = imageView.getDrawable();
 
-        // Get the drawing cache as a Bitmap
-        Bitmap bitmap = Bitmap.createBitmap(imageView.getDrawingCache());
-
-        // Disable drawing cache to release resources
-        imageView.setDrawingCacheEnabled(false);
-
-        // Return the obtained bitmap
-        return bitmap;
-    }
-
-    public static Bitmap drawableToBitmap(Context context, int drawableId) {
-        // Load the drawable
-        Drawable drawable = ContextCompat.getDrawable(context, drawableId);
-        if (drawable == null) {
-            return null;
+            if (drawable instanceof BitmapDrawable) {
+                // If the drawable is a BitmapDrawable, extract the Bitmap
+                return ((BitmapDrawable) drawable).getBitmap();
+            }
         }
 
-        // Create a bitmap with the drawable's width and height
-        Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        // Handle the case where imageView or its drawable is not a BitmapDrawable
 
-        // Draw the drawable onto the bitmap
-        Canvas canvas = new Canvas(bitmap);
-        drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
-        drawable.draw(canvas);
-
-        return bitmap;
+        return null; // or any other appropriate handling
     }
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -804,5 +795,13 @@ public class EdgeCropperActivity extends AppCompatActivity {
             allImagesByteList.remove(mIndex - 1);
 
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+         Intent intent = new Intent(this, MenuActivity.class);
+         startActivity(intent);
+         finishAffinity();
     }
 }

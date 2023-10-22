@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,19 +27,38 @@ public class DownloadActivity extends AppCompatActivity {
     private List<String> pdfList;
     private RecyclerView recyclerView;
     private ProgressDialog progressBar;
-
+    private ImageView btnShare;
+    private ImageView imgBck;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_download);
         recyclerView = findViewById(R.id.recyclerView);
+        btnShare = findViewById(R.id.btnShare);
+        imgBck = findViewById(R.id.imgBck);
 
         DatabaseHelper myDb=new DatabaseHelper(this);
         int cnt=myDb.getCount();
         if(cnt>0) {
             loadAllData();
         }
+
+        btnShare.setVisibility(View.GONE);
+        imgBck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DownloadActivity.this, MenuActivity.class);
+
+                // Apply the fade-in animation to the new activity's layout
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION); // Prevent the default animation
+                startActivity(intent);
+
+                // OverridePendingTransition to apply the custom fade-in animation
+                overridePendingTransition(R.anim.back, 0);
+                finish();
+            }
+        });
 
         setInterstitialAds();
         TextView tv=findViewById(R.id.tvTitle);
@@ -46,11 +67,19 @@ public class DownloadActivity extends AppCompatActivity {
     }
     private void home()
     {
-        startActivity(new Intent(this,MenuActivity.class));
+        Intent intent = new Intent(DownloadActivity.this, MenuActivity.class);
+        startActivity(intent);
         finish();
     }
     private void move() {
-        startActivity(new Intent(this,MenuActivity.class));
+        Intent intent = new Intent(DownloadActivity.this, MenuActivity.class);
+
+        // Apply the fade-in animation to the new activity's layout
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION); // Prevent the default animation
+        startActivity(intent);
+
+        // OverridePendingTransition to apply the custom fade-in animation
+        overridePendingTransition(R.anim.back, 0);
         finish();
     }
 
@@ -58,7 +87,7 @@ public class DownloadActivity extends AppCompatActivity {
     {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-        pdfAdapter = new AllPdfRecyclerAdapter(pdfList,this);
+        pdfAdapter = new AllPdfRecyclerAdapter(pdfList,this, "all");
         recyclerView.setAdapter(pdfAdapter);
     }
     private void loadAllData() {

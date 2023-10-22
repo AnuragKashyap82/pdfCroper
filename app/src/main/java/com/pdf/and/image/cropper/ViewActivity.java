@@ -33,7 +33,7 @@ public class ViewActivity extends AppCompatActivity {
 
         findViewById(R.id.btnShare).setOnClickListener(v ->
         {
-            shareFile();
+//            shareFile();
         });
 
     }

@@ -195,36 +195,48 @@
 
     <LinearLayout
         android:id="@+id/layBottom"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
         android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:backgroundTint="@color/tabBarColor"
         android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnCropImage"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_margin="8dp"
-            android:textSize="13sp"
-            android:padding="8dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="26dp"
+            android:layout_marginLeft="26dp"
             android:textColor="@color/white"
             android:background="@drawable/ic_crp" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnMore"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_margin="8dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:background="@drawable/ic_more"
-            android:padding="8dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="26dp"
+            android:layout_marginLeft="26dp"
             android:textColor="@color/white"
             android:textSize="13sp" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnClear"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_margin="12dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="26dp"
+            android:layout_marginLeft="26dp"
             android:textColor="@color/white"
             android:background="@drawable/ic_clear"
             android:textSize="13sp"
@@ -232,9 +244,13 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnPrint"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_margin="12dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="26dp"
+            android:layout_marginLeft="26dp"
             android:textSize="13sp"
             android:textColor="@color/white"
             android:background="@drawable/ic_done"

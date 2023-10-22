@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.graphics.pdf.PdfRenderer;
 import android.net.Uri;
@@ -23,6 +24,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,12 +56,12 @@ public class CropToImageActivity extends AppCompatActivity {
     Uri imgUri;
     TextView tvPage;
     LinearLayout layCounter;
-    AppCompatButton btnImageSave;
+    ImageView btnImageSave, button1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crop_to_image);
-        Button button1 = findViewById(R.id.button1);
+         button1 = findViewById(R.id.button1);
         imageview1 = findViewById(R.id.imageView);
         layCounter=findViewById(R.id.layCounter);
         button1.setOnClickListener(v -> {
@@ -75,7 +77,7 @@ public class CropToImageActivity extends AppCompatActivity {
         });
 
         btnImageSave=findViewById(R.id.btnImageSave);
-        btnImageSave.setVisibility(View.GONE);
+        btnImageSave.setEnabled(false);
         btnImageSave.setOnClickListener(v -> {
             if(total_pages>0) {
                 loadAllData();
@@ -207,7 +209,7 @@ public class CropToImageActivity extends AppCompatActivity {
                  pdfView.setVisibility(View.GONE);
                  layCounter.setVisibility(View.GONE);
                  imageview1.setVisibility(View.VISIBLE);
-                  btnImageSave.setVisibility(View.VISIBLE);
+                  btnImageSave.setEnabled(true);
                  Toast.makeText(this, "current page"+currentPage, Toast.LENGTH_SHORT).show();
                  _display(currentPage-1);
                      screenshotPath = takeScreenshotAndSave(imageview1);
@@ -223,8 +225,23 @@ public class CropToImageActivity extends AppCompatActivity {
                 .setBorderCornerColor(R.color.black)
                 .setBorderLineThickness(1)
                 .setBorderLineThickness(1)
+//                .setInitialCropWindowRectangle(getInitialCropBounds(imagePath))
                 .start(this);
 
+    }
+
+    private Rect getInitialCropBounds(String imagePath) {
+        Bitmap bitmap = BitmapFactory.decodeFile(imagePath);
+        int width = bitmap.getWidth();
+        int height = bitmap.getHeight();
+
+        // Calculate the initial crop bounds
+        int left = 48; // You can adjust this as needed
+        int top = 48; // You can adjust this as needed
+        int right = width-48;
+        int bottom = height-48;
+
+        return new Rect(left, top, right, bottom);
     }
 
 

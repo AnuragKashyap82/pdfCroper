@@ -14,13 +14,13 @@
         android:layout_margin="4dp"
         android:layout_height="0dp"/>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnShare"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="8dp"
-        android:textColor="@color/white"
-        android:background="@drawable/btn_bg"
-        android:text="@string/share_pdf"/>
+<!--    <androidx.appcompat.widget.AppCompatButton-->
+<!--        android:id="@+id/btnShare"-->
+<!--        android:layout_width="120dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:layout_margin="8dp"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:background="@drawable/btn_bg"-->
+<!--        android:text="@string/share_pdf"/>-->
 </LinearLayout>

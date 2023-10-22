@@ -21,15 +21,15 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/app_name" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnShare"
-        android:layout_width="140dp"
-        android:layout_height="38dp"
-        android:layout_gravity="center"
-        android:layout_margin="8dp"
-        android:textSize="13sp"
-        android:textColor="@color/white"
-        android:drawableStart="@drawable/baseline_share_24"
-        android:background="@drawable/btn_bg"
-        android:text="@string/share_app"/>
+<!--    <androidx.appcompat.widget.AppCompatButton-->
+<!--        android:id="@+id/btnShare"-->
+<!--        android:layout_width="140dp"-->
+<!--        android:layout_height="38dp"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:layout_margin="8dp"-->
+<!--        android:textSize="13sp"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:drawableStart="@drawable/baseline_share_24"-->
+<!--        android:background="@drawable/btn_bg"-->
+<!--        android:text="@string/share_app"/>-->
 </LinearLayout>

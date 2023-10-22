@@ -10,6 +10,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -24,6 +26,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -71,7 +74,7 @@ public class PdfActivity extends AppCompatActivity {
     ArrayList<Uri> mArrayUri;
     int position = 0;
 
-    private AppCompatButton btnClear, btnPrint, btnCropNew;
+    private ImageView btnClear, btnPrint, btnCropNew;
 
     private LinearLayout layOptions, layBottom;
     ArrayList<ImageView> allImgList;
@@ -85,7 +88,9 @@ public class PdfActivity extends AppCompatActivity {
 
     private final int CAMERA = 2;
 
-    private AppCompatButton btnMore, btnCrop, doneBtn;
+    private ImageView btnMore, doneBtn;
+
+//    private AppCompatButton btnCrop;
 
     private int cameraCnt = 0;
     private int addMoreValue = 1;
@@ -95,6 +100,7 @@ public class PdfActivity extends AppCompatActivity {
     Uri cropUri;
     private boolean isCamera = false;
     private boolean isCrop = false;
+    private  ImageView btnShare;
     private int cnt = 1;
 
     @Override
@@ -124,6 +130,7 @@ public class PdfActivity extends AppCompatActivity {
     private void init() {
 
         btnClear = findViewById(R.id.btnClear);
+        btnShare = findViewById(R.id.btnShare);
         btnCropNew = findViewById(R.id.btnCrop);
         btnPrint = findViewById(R.id.btnPrint);
         doneBtn = findViewById(R.id.doneBtn);
@@ -132,7 +139,7 @@ public class PdfActivity extends AppCompatActivity {
         cropImageView = findViewById(R.id.cropImageView);
         layBottom = findViewById(R.id.layBottom);
         scannerView.setVisibility(View.GONE);
-        btnCrop = findViewById(R.id.btnCropImage);
+//        btnCrop = findViewById(R.id.btnCropImage);
         preview = findViewById(R.id.imgView);
         preview2 = findViewById(R.id.imgView2);
         preview3 = findViewById(R.id.imgView3);
@@ -167,14 +174,16 @@ public class PdfActivity extends AppCompatActivity {
         allImgList.add(p14);
         allImgList.add(p15);
 
+        btnShare.setVisibility(View.GONE);
+
         for (int i = 0; i < allImgList.size(); i++) {
             allImgList.get(i).setVisibility(View.GONE);
         }
 
-        btnPrint.setVisibility(View.INVISIBLE);
-        btnClear.setVisibility(View.INVISIBLE);
-        doneBtn.setVisibility(View.INVISIBLE);
-        btnCropNew.setVisibility(View.INVISIBLE);
+        btnPrint.setVisibility(View.GONE);
+        btnClear.setVisibility(View.GONE);
+        doneBtn.setVisibility(View.GONE);
+        btnCropNew.setVisibility(View.GONE);
         layOptions = findViewById(R.id.layOptions);
         btnClear.setOnClickListener(view ->
         {
@@ -199,7 +208,7 @@ public class PdfActivity extends AppCompatActivity {
         {
             doneBtn.setVisibility(View.VISIBLE);
             btnMore.setVisibility(View.GONE);
-            btnCrop.setVisibility(View.GONE);
+//            btnCrop.setVisibility(View.GONE);
             btnCropNew.setVisibility(View.GONE);
             btnClear.setVisibility(View.GONE);
             btnPrint.setVisibility(View.GONE);
@@ -236,7 +245,7 @@ public class PdfActivity extends AppCompatActivity {
             if (isCamera) {
                 btnMore.setVisibility(View.VISIBLE);
             }
-            btnCrop.setVisibility(View.VISIBLE);
+//            btnCrop.setVisibility(View.VISIBLE);
             btnPrint.setVisibility(View.VISIBLE);
             btnCropNew.setVisibility(View.VISIBLE);
             cropImageView.setVisibility(View.VISIBLE);
@@ -252,7 +261,7 @@ public class PdfActivity extends AppCompatActivity {
                 btnCropNew.setVisibility(View.VISIBLE);
             } else {
                 Toast.makeText(context, "please select image", Toast.LENGTH_SHORT).show();
-                btnPrint.setVisibility(View.INVISIBLE);
+                btnPrint.setVisibility(View.GONE);
                 layOptions.setVisibility(View.VISIBLE);
             }
         });
@@ -266,22 +275,22 @@ public class PdfActivity extends AppCompatActivity {
         });
         TextView tv = findViewById(R.id.tvTitle);
         tv.setText("Create Pdf");
-        btnCrop.setOnClickListener(v ->
-        {
-            if (cropUri != null) {
-                isCrop = true;
-                tv.setText("Crop Image");
-                new MyCustomAsyncTask2(context, null, 1).execute();
-            } else Toast.makeText(context, "No Image Present", Toast.LENGTH_SHORT).show();
-
-        });
+//        btnCrop.setOnClickListener(v ->
+//        {
+//            if (cropUri != null) {
+//                isCrop = true;
+//                tv.setText("Crop Image");
+//                new MyCustomAsyncTask2(context, null, 1).execute();
+//            } else Toast.makeText(context, "No Image Present", Toast.LENGTH_SHORT).show();
+//
+//        });
 
         btnMore.setVisibility(View.GONE);
-        btnCrop.setVisibility(View.GONE);
-        if (cnt > 1) {
-            pickImage();
-            layOptions.setVisibility(View.GONE);
-        }
+//        btnCrop.setVisibility(View.GONE);
+//        if (cnt > 1) {
+//            pickImage();
+//            layOptions.setVisibility(View.GONE);
+//        }
 
 
         findViewById(R.id.cardBack).setOnClickListener(v -> home());
@@ -361,7 +370,7 @@ public class PdfActivity extends AppCompatActivity {
                 //   progressBar.dismiss();
                 btnClear.setVisibility(View.VISIBLE);
                 btnCropNew.setVisibility(View.VISIBLE);
-                btnPrint.setVisibility(View.INVISIBLE);
+                btnPrint.setVisibility(View.GONE);
                 Toast.makeText(context, "Pdf is Successfully created ...", Toast.LENGTH_SHORT).show();
                 insertPdfPath();
                 moveToFile();
@@ -596,17 +605,30 @@ public class PdfActivity extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+//    public Bitmap getBitmapFromImageView(ImageView imageView) {
+//        // Enable drawing cache for the ImageView
+//        imageView.setDrawingCacheEnabled(true);
+//
+//        // Get the drawing cache as a Bitmap
+//        Bitmap bitmap = Bitmap.createBitmap(imageView.getDrawingCache());
+//
+//        // Disable drawing cache to release resources
+//        imageView.setDrawingCacheEnabled(false);
+//
+//        // Return the obtained bitmap
+//        return bitmap;
+//    }
+
     public Bitmap getBitmapFromImageView(ImageView imageView) {
-        // Enable drawing cache for the ImageView
-        imageView.setDrawingCacheEnabled(true);
+        // Create a Bitmap with the same dimensions as the ImageView
+        Bitmap bitmap = Bitmap.createBitmap(imageView.getWidth(), imageView.getHeight(), Bitmap.Config.ARGB_8888);
 
-        // Get the drawing cache as a Bitmap
-        Bitmap bitmap = Bitmap.createBitmap(imageView.getDrawingCache());
+        // Create a Canvas with the Bitmap
+        Canvas canvas = new Canvas(bitmap);
 
-        // Disable drawing cache to release resources
-        imageView.setDrawingCacheEnabled(false);
+        // Draw the ImageView onto the Canvas
+        imageView.draw(canvas);
 
-        // Return the obtained bitmap
         return bitmap;
     }
 
@@ -791,14 +813,34 @@ public class PdfActivity extends AppCompatActivity {
         }
     }
     private void setCropper(Uri uri) {
-        CropImage.activity(uri)
-                .setGuidelines(CropImageView.Guidelines.ON)
-                .setBorderLineColor(R.color.black)
-                .setBorderCornerColor(R.color.black)
-                .setBorderLineThickness(1)
-                .setBorderLineThickness(1)
-                .start(this);
+        try {
+            Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+            int width = bitmap.getWidth();
+            int height = bitmap.getHeight();
+
+            CropImage.activity(uri)
+                    .setGuidelines(CropImageView.Guidelines.ON)
+                    .setBorderLineColor(R.color.black)
+                    .setBorderCornerColor(R.color.black)
+                    .setBorderLineThickness(1)
+                    .setBorderLineThickness(1)
+                    .setInitialCropWindowRectangle(getInitialCropBounds(width, height))
+                    .start(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+    private Rect getInitialCropBounds(int width, int height) {
+        // Calculate the initial crop bounds
+        int left = 32; // You can adjust this as needed
+        int top = 32; // You can adjust this as needed
+        int right = width;
+        int bottom = height;
+
+        return new Rect(left, top, right, bottom);
+    }
+
 
     public class MyCustomAsyncTask1 extends AsyncTask<Void, Void, Void> {
         private Context context;
@@ -838,7 +880,7 @@ public class PdfActivity extends AppCompatActivity {
             super.onPostExecute(aVoid);
             //  progressBar.cancel();
             btnMore.setVisibility(View.VISIBLE);
-            btnCrop.setVisibility(View.VISIBLE);
+//            btnCrop.setVisibility(View.VISIBLE);
             allImgList.get(cameraCnt).setImageURI(myUri);
             allImgList.get(cameraCnt).setVisibility(View.VISIBLE);
             allImagesByteList.add(inputData);

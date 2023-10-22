@@ -6,39 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/colorPrimary"
+    android:background="@color/white"
     tools:context=".CropToImageActivity">
     <include layout="@layout/lay_top"/>
-    <LinearLayout
-        android:id="@+id/layCounter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="horizontal">
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/backButton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_margin="8dp"
-            android:background="@drawable/ic_pre"
-             />
-
-        <TextView
-            android:id="@+id/pageNumberText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:textColor="@color/white"
-            android:text="Page 1"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/forwardButton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_margin="8dp"
-            android:background="@drawable/ic_for"
-            />
-    </LinearLayout>
 
     <ImageView
         android:id="@+id/imageView"
@@ -55,34 +25,81 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="61dp"
+        android:background="#9E9E9E" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="72dp"
+        android:background="@color/white"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:backgroundTint="@color/white"
         android:orientation="horizontal">
-        <View
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="22dp"/>
-        <androidx.appcompat.widget.AppCompatButton
+
+        <ImageView
             android:id="@+id/button1"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_gravity="center"
-            android:layout_margin="8dp"
-            android:background="@drawable/ic_crp"
-            />
-        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:tint="@color/white"
+            android:layout_margin="16dp"
+            android:padding="10dp"
+            android:background="@drawable/shape_circle_02"
+            android:src="@drawable/ic_crp"
+            android:textColor="@color/white" />
+
+
+
+        <LinearLayout
+            android:id="@+id/layCounter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_rect_01"
+            android:orientation="horizontal">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/backButton"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_margin="8dp"
+                android:backgroundTint="@color/white"
+                android:background="@drawable/ic_pre"
+                />
+
+            <TextView
+                android:id="@+id/pageNumberText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:textColor="@color/white"
+                android:text="Page 1"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/forwardButton"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_margin="8dp"
+                android:backgroundTint="@color/white"
+                android:background="@drawable/ic_for"
+                />
+        </LinearLayout>
+
+        <ImageView
             android:id="@+id/btnImageSave"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_gravity="center"
-            android:layout_margin="8dp"
-            android:background="@drawable/ic_done"
-            />
-        <View
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="22dp"/>
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:tint="@color/white"
+            android:layout_margin="16dp"
+            android:padding="10dp"
+            android:background="@drawable/shape_circle_02"
+            android:src="@drawable/ic_done"
+            android:textColor="@color/white" />
+
+
     </LinearLayout>
 
 </LinearLayout>

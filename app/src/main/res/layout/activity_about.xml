@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/colorPrimary"
+    android:background="@color/white"
     tools:context=".AboutActivity">
     <include layout="@layout/lay_top"/>
     <View
@@ -21,22 +21,21 @@
         android:layout_gravity="center"
         app:cardElevation="2dp"
         android:layout_margin="12dp"
-        app:cardBackgroundColor="@color/bg_color"
+        app:cardBackgroundColor="#F2F2F3"
         >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             >
-
             <ImageView
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:contentDescription="@string/app_name"
                 android:layout_gravity="center"
                 android:layout_marginTop="28dp"
-                android:src="@drawable/ic_infos"
-                android:background="@drawable/ic_info_bck"
+                android:src="@drawable/outline_info_24"
+                app:tint="#3E3D3D"
                 />
 
             <TextView
@@ -44,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:textColor="@color/white"
+                android:textColor="#3E3D3D"
                 android:text="@string/about_app"
                 android:textStyle="bold"
                 android:textSize="15sp"
@@ -60,7 +59,7 @@
         android:layout_gravity="center"
         app:cardElevation="2dp"
         android:layout_margin="12dp"
-        app:cardBackgroundColor="@color/bg_color"
+        app:cardBackgroundColor="#F2F2F3"
         >
         <LinearLayout
             android:layout_width="match_parent"
@@ -74,6 +73,7 @@
                 android:contentDescription="@string/app_name"
                 android:layout_gravity="center"
                 android:layout_marginTop="28dp"
+                app:tint="#3E3D3D"
                 android:src="@drawable/ic_star_img" />
 
             <TextView
@@ -81,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:textColor="@color/white"
+                android:textColor="#3E3D3D"
                 android:text="@string/rate_us"
                 android:textStyle="bold"
                 android:textSize="15sp"
@@ -98,7 +98,7 @@
         android:layout_gravity="center"
         app:cardElevation="2dp"
         android:layout_margin="12dp"
-        app:cardBackgroundColor="@color/bg_color"
+        app:cardBackgroundColor="#F2F2F3"
         >
         <LinearLayout
             android:layout_width="match_parent"
@@ -112,6 +112,7 @@
                 android:contentDescription="@string/app_name"
                 android:layout_gravity="center"
                 android:layout_marginTop="28dp"
+                app:tint="#3E3D3D"
                 android:src="@drawable/ic_share_img" />
 
             <TextView
@@ -119,7 +120,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:textColor="@color/white"
+                android:textColor="#3E3D3D"
                 android:text="@string/share_app"
                 android:textStyle="bold"
                 android:textSize="15sp"

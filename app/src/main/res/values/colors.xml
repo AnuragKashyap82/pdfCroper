@@ -4,6 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="colorAccent">#FD9F81</color>
     <color name="colorPrimary">#1D2951</color>
+    <color name="tabBarColor">#293953</color>
     <color name="pastel_green">#d9debb</color>
     <color name="red">#F00000</color>
     <color name="bg_color">#293953</color>

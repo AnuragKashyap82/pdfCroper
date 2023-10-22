@@ -1,45 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:id="@+id/cardBack"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="55dp"
-    android:layout_alignParentTop="true"
-    android:orientation="horizontal"
-    android:background="@drawable/rectangle_top"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:id="@+id/cardBack"
+    android:background="@color/white"
+    android:backgroundTint="@color/white"
+    android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/imgBck"
-        android:layout_width="42dp"
-        android:layout_height="42dp"
-        android:layout_gravity="center"
-        android:layout_margin="8dp"
-        android:padding="3dp"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_bck"
-        />
-
-    <TextView
-        android:id="@+id/tvTitle"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:text="@string/app_name"
-        android:textColor="@color/colorPrimary"
-        android:textSize="18sp"
-        android:padding="8dp"
-        android:layout_marginEnd="32dp"
-        android:gravity="bottom|center"
-        />
-    <ImageView
-        android:id="@+id/imgHome"
-        android:layout_width="42dp"
-        android:layout_height="42dp"
-        android:layout_gravity="center"
-        android:layout_margin="8dp"
-        android:visibility="gone"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_home"
-        />
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal">
 
-</LinearLayout>
+        <ImageView
+            android:id="@+id/imgBck"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/baseline_arrow_back_24"
+            android:layout_gravity="center"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="16dp" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:padding="16dp"
+            android:layout_marginEnd="40dp"
+            android:text="My Documents"
+            android:textSize="22dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/btnShare"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/baseline_share_24"
+            android:layout_gravity="center"
+            app:tint="#2D2D2D"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="20dp" />
+
+    </LinearLayout>
+
+    <!-- Divider below "My PDF" -->
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="61dp"
+        android:background="#9E9E9E" />
+
+</RelativeLayout>

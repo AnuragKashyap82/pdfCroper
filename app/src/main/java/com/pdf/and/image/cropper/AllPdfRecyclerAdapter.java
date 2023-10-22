@@ -26,12 +26,15 @@ public class AllPdfRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     private List<String> recyclerItem;
     private Context ctx;
+
+    private  String code;
     PdfRenderer pdfRenderer;
     PdfRenderer.Page currentPage;
 
-    public AllPdfRecyclerAdapter(List<String> recyclerItem, Context ctx) {
+    public AllPdfRecyclerAdapter(List<String> recyclerItem, Context ctx, String code) {
         this.recyclerItem = recyclerItem;
         this.ctx = ctx;
+        this.code = code;
     }
 
     @NonNull
@@ -50,11 +53,11 @@ public class AllPdfRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         {
             Bitmap bmImg = BitmapFactory.decodeFile(recyclerItem.get(position));
             ((QuoteViewHolder) holder).view.setImageBitmap(bmImg);
-            ((QuoteViewHolder) holder).cardView.setBackgroundResource(R.drawable.ic_one);
+            ((QuoteViewHolder) holder).type.setImageResource(R.drawable.image);
         }else {
             File pdfFile = new File(recyclerItem.get(position));
             try {
-                ((QuoteViewHolder) holder).cardView.setBackgroundResource(R.drawable.ic_two);
+                ((QuoteViewHolder) holder).type.setImageResource(R.drawable.baseline_picture_as_pdf_24);
                 pdfRenderer = new PdfRenderer(ParcelFileDescriptor.open(pdfFile, ParcelFileDescriptor.MODE_READ_ONLY));
                 currentPage = pdfRenderer.openPage(0);
                 Bitmap bitmap = Bitmap.createBitmap(currentPage.getWidth(), currentPage.getHeight(), Bitmap.Config.ARGB_8888);
@@ -144,7 +147,15 @@ public class AllPdfRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     @Override
     public int getItemCount() {
-        return recyclerItem.size();
+        if(recyclerItem.size()>5){
+            if(code == "main"){
+                return 5;
+            }else {
+                return recyclerItem.size();
+            }
+        }else {
+            return recyclerItem.size();
+        }
     }
 
 
@@ -152,7 +163,7 @@ public class AllPdfRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
        // public TextView tvName;
       //  public Button btnShare, btnOpen;
       //  public ImageView imgView;
-        ImageView view;
+        ImageView view, type;
         CardView cardView;
 
         public QuoteViewHolder(@NonNull View itemView) {
@@ -163,6 +174,7 @@ public class AllPdfRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
           //  imgView = itemView.findViewById(R.id.imgViewPdf);
             view=itemView.findViewById(R.id.imgViewPdf);
             cardView=itemView.findViewById(R.id.layPdf);
+            type=itemView.findViewById(R.id.type);
         }
     }
 
